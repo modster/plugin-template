@@ -1,90 +1,260 @@
-# Obsidian Sample Plugin
+# Observable Framework for Obsidian
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+An Obsidian plugin that integrates Observable Framework to create interactive dashboards, charts, reports, maps, and more from any data source within your vault(s) or from external APIs.
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+## Features
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+- 📊 **Interactive Visualizations**: Create dashboards with Observable Framework right inside Obsidian
+- 🔄 **Data Loaders**: Process data using JavaScript, Python, R, or SQL
+- 📁 **Vault Integration**: Load data from CSV, JSON, and other files in your vault
+- 🌐 **External APIs**: Fetch and visualize data from external sources
+- 🎨 **Customizable Themes**: Light and dark theme support for charts
+- ⚡ **Auto-Refresh**: Automatically update dashboards at specified intervals
 
-## First time developing plugins?
+## Installation
 
-Quick starting guide for new plugin devs:
+### Manual Installation
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+1. Download the latest release from the [Releases](https://github.com/modster/plugin-template/releases) page
+2. Extract the files into your vault's `.obsidian/plugins/observable-framework/` directory
+3. Reload Obsidian
+4. Enable the plugin in Settings → Community Plugins
 
-## Releasing new releases
+### From Obsidian Community Plugins
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+(Coming soon after publication to the community plugins list)
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+## Quick Start
 
-## Adding your plugin to the community plugin list
+### 1. Create a Dashboard
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+Use the command palette (`Ctrl/Cmd + P`) and select **"Create new Observable dashboard"**. This will create a new markdown file with example Observable code blocks.
 
-## How to use
+### 2. Write Observable Code
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+Add Observable code blocks to any markdown file using the `observable` language tag:
 
-## Manually installing the plugin
+\`\`\`observable
+// Simple data visualization
+const data = [
+  { category: "A", value: 10 },
+  { category: "B", value: 20 },
+  { category: "C", value: 15 }
+];
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+display(data);
+\`\`\`
 
-## Improve code quality with eslint
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- This project already has eslint preconfigured, you can invoke a check by running`npm run lint`
-- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.
-- A GitHub action is preconfigured to automatically lint every commit on all branches.
+### 3. View the Dashboard
 
-## Funding URL
+Open the dashboard view with:
+- Click the chart icon in the ribbon
+- Use command: **"Open Observable dashboard"**
+- Use command: **"Load current file as Observable dashboard"**
 
-You can include funding URLs where people who use your plugin can financially support it.
+## Data Loaders
 
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
+Data loaders allow you to process data in multiple languages before visualization.
 
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
-```
+### Creating a Data Loader
 
-If you have multiple URLs, you can also do:
+Use the command **"Create data loader template"** and select your preferred language:
 
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
+#### JavaScript Data Loader
 
-## API Documentation
+\`\`\`javascript
+// data-loader.js
+const response = await fetch('https://api.example.com/data');
+const data = await response.json();
 
-See https://docs.obsidian.md
+// Process data
+const processed = data.map(item => ({
+  name: item.name,
+  value: item.value
+}));
+
+return processed;
+\`\`\`
+
+#### Python Data Loader
+
+\`\`\`python
+# data-loader.py
+import pandas as pd
+import json
+
+df = pd.read_csv("data.csv")
+result = df.groupby("category").agg({"value": "sum"}).reset_index()
+print(json.dumps(result.to_dict(orient="records")))
+\`\`\`
+
+#### R Data Loader
+
+\`\`\`r
+# data-loader.R
+library(jsonlite)
+
+df <- read.csv("data.csv")
+result <- aggregate(value ~ category, data=df, sum)
+cat(toJSON(result, pretty=FALSE, auto_unbox=TRUE))
+\`\`\`
+
+#### SQL Data Loader
+
+\`\`\`sql
+-- data-loader.sql
+SELECT category, SUM(value) as total_value
+FROM data_table
+GROUP BY category
+ORDER BY total_value DESC;
+\`\`\`
+
+### Loading Data from Vault Files
+
+\`\`\`observable
+// Load JSON data from vault
+const data = await FileAttachment("data/sales.json").json();
+display(data);
+
+// Load CSV data from vault
+const csvData = await FileAttachment("data/metrics.csv").csv();
+display(csvData);
+\`\`\`
+
+### Loading Data from External APIs
+
+\`\`\`observable
+// Fetch from external API
+const apiData = await fetch('https://api.example.com/data')
+  .then(response => response.json());
+
+display(apiData);
+\`\`\`
+
+## Configuration
+
+Access plugin settings via **Settings → Observable Framework**:
+
+### Settings
+
+- **Data Loader Path**: Folder for data loader scripts (default: `data-loaders`)
+- **Enable Auto Refresh**: Automatically refresh dashboards
+- **Refresh Interval**: Refresh frequency in seconds
+- **Allow External APIs**: Enable/disable external API access
+- **Default Chart Theme**: Choose light or dark theme for visualizations
+
+## Use Cases
+
+### 1. Personal Analytics Dashboard
+
+Track your daily habits, notes, or productivity metrics from vault data.
+
+\`\`\`observable
+// Load daily notes metadata
+const notes = await FileAttachment("daily-notes.json").json();
+
+// Create visualization
+display(notes);
+\`\`\`
+
+### 2. Project Management Dashboard
+
+Visualize project progress, tasks, and milestones.
+
+\`\`\`observable
+const tasks = await FileAttachment("tasks.csv").csv();
+const completed = tasks.filter(t => t.status === 'done').length;
+const total = tasks.length;
+
+display({ completed, total, percentage: (completed/total)*100 });
+\`\`\`
+
+### 3. Research Data Visualization
+
+Analyze and visualize research data from external sources.
+
+\`\`\`observable
+const research = await fetch('https://api.research.org/papers?topic=ai')
+  .then(r => r.json());
+
+display(research);
+\`\`\`
+
+### 4. Financial Tracking
+
+Monitor expenses, income, or investments.
+
+\`\`\`observable
+const expenses = await FileAttachment("finances/expenses.csv").csv();
+
+// Group by category
+const byCategory = expenses.reduce((acc, item) => {
+  acc[item.category] = (acc[item.category] || 0) + parseFloat(item.amount);
+  return acc;
+}, {});
+
+display(byCategory);
+\`\`\`
+
+## Commands
+
+- **Open Observable dashboard**: Opens the dashboard view panel
+- **Create new Observable dashboard**: Creates a new dashboard template
+- **Create data loader template**: Creates a data loader in your preferred language
+- **Load current file as Observable dashboard**: Loads the current markdown file in dashboard view
+
+## Development
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Setup
+
+\`\`\`bash
+npm install
+npm run dev  # Development with watch mode
+npm run build  # Production build
+\`\`\`
+
+### Project Structure
+
+\`\`\`
+src/
+├── main.ts              # Plugin entry point
+├── settings.ts          # Plugin settings
+├── observable-view.ts   # Dashboard view component
+└── data-loader.ts       # Data loader manager
+\`\`\`
+
+## Roadmap
+
+- [ ] Full Observable Plot integration
+- [ ] Live code execution in dashboards
+- [ ] More data loader language support
+- [ ] Chart export functionality
+- [ ] Collaborative dashboards
+- [ ] Template library
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+0-BSD
+
+## Support
+
+- [GitHub Issues](https://github.com/modster/plugin-template/issues)
+- [Obsidian Forum](https://forum.obsidian.md/)
+
+## Acknowledgments
+
+This plugin integrates [Observable Framework](https://observablehq.com/framework/) for data visualization capabilities.
+
+---
+
+**Note**: This plugin is in active development. Some features are still being implemented. Full Observable Plot execution and advanced charting features are coming soon.
+

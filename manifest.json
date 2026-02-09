@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "observable-framework",
+	"name": "Observable Framework",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Create dashboards, charts, reports, maps and more from any data source within your vault(s) or from external APIs using Observable Framework.",
+	"author": "modster",
+	"authorUrl": "https://github.com/modster",
 	"isDesktopOnly": false
 }

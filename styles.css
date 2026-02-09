@@ -1,8 +1,141 @@
-/*
+/* Observable Framework Styles */
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.observable-framework-container {
+	padding: 20px;
+	height: 100%;
+	overflow-y: auto;
+}
 
-If your plugin does not need CSS, delete this file.
+.observable-header {
+	border-bottom: 2px solid var(--background-modifier-border);
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
 
-*/
+.observable-header h3 {
+	margin: 0;
+	color: var(--text-normal);
+}
+
+.observable-content {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.observable-welcome {
+	padding: 20px;
+	background: var(--background-secondary);
+	border-radius: 8px;
+}
+
+.observable-welcome h2 {
+	margin-top: 0;
+	color: var(--text-accent);
+}
+
+.observable-welcome ul,
+.observable-welcome ol {
+	margin: 10px 0;
+	padding-left: 25px;
+}
+
+.observable-welcome li {
+	margin: 5px 0;
+}
+
+.observable-instructions {
+	margin-top: 20px;
+	padding: 15px;
+	background: var(--background-primary);
+	border-left: 3px solid var(--text-accent);
+	border-radius: 4px;
+}
+
+.observable-dashboard {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.observable-block {
+	padding: 15px;
+	background: var(--background-secondary);
+	border-radius: 6px;
+	border: 1px solid var(--background-modifier-border);
+}
+
+.observable-block pre {
+	margin: 10px 0;
+	padding: 10px;
+	background: var(--background-primary);
+	border-radius: 4px;
+	overflow-x: auto;
+}
+
+.observable-block code {
+	font-family: var(--font-monospace);
+	font-size: 0.9em;
+}
+
+.observable-output {
+	margin-top: 10px;
+	padding: 10px;
+	background: var(--background-primary);
+	border-radius: 4px;
+}
+
+.observable-info {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--text-muted);
+	font-size: 0.9em;
+	margin: 0;
+}
+
+.observable-error {
+	padding: 10px;
+	background: var(--background-modifier-error);
+	color: var(--text-error);
+	border-radius: 4px;
+	border-left: 3px solid var(--text-error);
+}
+
+/* Data Loader Modal Styles */
+.loader-button-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.loader-button-container button {
+	padding: 10px 20px;
+	margin-bottom: 5px;
+}
+
+/* Responsive chart containers */
+.observable-chart {
+	width: 100%;
+	height: auto;
+	min-height: 300px;
+}
+
+/* Dark theme adjustments */
+.theme-dark .observable-welcome {
+	background: var(--background-secondary-alt);
+}
+
+.theme-dark .observable-block {
+	background: var(--background-secondary-alt);
+}
+
+/* Light theme adjustments */
+.theme-light .observable-welcome {
+	background: var(--background-secondary);
+}
+
+.theme-light .observable-block {
+	background: var(--background-secondary);
+}
