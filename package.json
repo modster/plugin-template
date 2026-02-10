@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-observable-framework",
+	"name": "observable-plugin",
 	"version": "1.0.0",
-	"description": "Create dashboards, charts, reports, maps and more from any data source within your vault(s) or from external APIs using Observable Framework",
+	"description": "This is a plugin for integratng Observablehq/framework (https://observablehq.com/framework) with Obsidian (https://obsidian.md). Embed charts, diagrams, maps and more in your Obsidian notes with Observable's reactive programming model.",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {
@@ -16,7 +16,8 @@
 		"@eslint/js": "9.30.1",
 		"@types/node": "^16.11.6",
 		"esbuild": "0.25.5",
-		"eslint-plugin-obsidianmd": "0.1.9",
+		"eslint": "^9.39.2",
+		"eslint-plugin-obsidianmd": "^0.1.9",
 		"globals": "14.0.0",
 		"jiti": "2.6.1",
 		"tslib": "2.4.0",
