@@ -1,15 +1,10 @@
 {
-	"id": "observable-plugin",
-	"name": "ObservablePlugin",
+	"id": "observable-framework",
+	"name": "Observable Framework",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Make Observable style charts with Obsidian.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"isDesktopOnly": false,
-	"fundingUrl": {
-		"Buy Me a Coffee": "https://buymeacoffee.com",
-		"GitHub Sponsor": "https://github.com/sponsors",
-		"Patreon": "https://www.patreon.com/"
-	}
+	"description": "Create dashboards, charts, reports, maps and more from any data source within your vault(s) or from external APIs using Observable Framework.",
+	"author": "modster",
+	"authorUrl": "https://github.com/modster",
+	"isDesktopOnly": false
 }
