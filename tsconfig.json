@@ -25,6 +25,7 @@
 		]
 	},
 	"include": [
-		"src/**/*.ts"
+		"src/**/*.ts",
+		".obsidian/plugins/observable-plugin/data-loaders/**/*.js"
 	]
 }
