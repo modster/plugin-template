@@ -31,7 +31,7 @@ export class ObservableSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('Observable framework settings')
+			.setName('Observable Obsidian')
 			.setHeading();
 
 		// Data Loader Path
@@ -39,7 +39,7 @@ export class ObservableSettingTab extends PluginSettingTab {
 			.setName('Data loader path')
 			.setDesc('Folder path for data loader scripts relative to vault root')
 			.addText(text => text
-				.setPlaceholder('data-loaders')
+				.setPlaceholder('Data Loaders')
 				.setValue(this.plugin.settings.dataLoaderPath)
 				.onChange(async (value) => {
 					this.plugin.settings.dataLoaderPath = value;
